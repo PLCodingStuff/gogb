@@ -1,6 +1,10 @@
 package main
 
-type Opcode uint16
+const KB = 1024
+
+var RAM [8 * KB]byte // 8 KB RAM
+
+type Opcode byte
 
 const (
 	NOP    Opcode = 0x00
@@ -11,7 +15,7 @@ const (
 )
 
 type CPU struct {
-	A      uint8
+	A      byte
 	PC     uint16
 	Halted bool
 }
@@ -25,10 +29,6 @@ func InitCPU() *CPU {
 func Step(cpu CPU) uint {
 	return 0
 }
-
-const SIZE = 8 * 1024 // 8 KB
-
-var RAM [SIZE]byte
 
 func main() {
 
