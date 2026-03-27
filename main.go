@@ -16,6 +16,8 @@ const KB = 1024
 
 var RAM [8 * KB]byte // 8 KB RAM
 
+const IORegisters = 0xFF00
+
 type CPU struct {
 	A      byte
 	PC     uint16
@@ -45,7 +47,7 @@ func Step(cpu CPU) uint {
 		return 8
 	case LDHa8A:
 		offset := RAM[cpu.PC]
-		RAM[0xFF00+uint16(offset)] = byte(cpu.A)
+		RAM[IORegisters+uint16(offset)] = byte(cpu.A)
 		return 12
 	case HALT:
 		cpu.Halted = true
