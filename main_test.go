@@ -2,6 +2,30 @@ package main
 
 import "testing"
 
+func TestNOP(t *testing.T) {
+
+}
+
+func TestJP_a16(t *testing.T) {
+
+}
+
+func TestJP_a16_LittleEndian(t *testing.T) {
+
+}
+
+func TestLD_A_d8(t *testing.T) {
+
+}
+
+func TestLDH_a8_A(t *testing.T) {
+
+}
+
+func TestHALT(t *testing.T) {
+
+}
+
 func TestAdd(t *testing.T) {
 	tests := []struct {
 		name     string
