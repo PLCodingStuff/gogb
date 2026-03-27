@@ -36,21 +36,26 @@ func Step(cpu CPU) uint {
 
 	switch opcode {
 	case NOP:
+		cpu.PC++
 		return 4
 	case JPa16:
 		lo := RAM[cpu.PC]
 		hi := RAM[cpu.PC+1]
 		cpu.PC = uint16(hi)<<8 | uint16(lo)
+		cpu.PC++
 		return 16
 	case LDAn8:
 		cpu.A = RAM[cpu.PC]
+		cpu.PC++
 		return 8
 	case LDHa8A:
 		offset := RAM[cpu.PC]
 		RAM[IORegisters+uint16(offset)] = byte(cpu.A)
+		cpu.PC++
 		return 12
 	case HALT:
 		cpu.Halted = true
+		cpu.PC++
 		return 4
 	default:
 		panic(fmt.Sprintf("Unknown opcode: 0x%02X", opcode))
