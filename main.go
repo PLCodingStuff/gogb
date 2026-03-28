@@ -24,10 +24,10 @@ type CPU struct {
 	Halted bool
 }
 
-func InitCPU() *CPU {
-	cpu := CPU{A: 0x0000, PC: 0x0100, Halted: false}
+func InitCPU() CPU {
+	cpu := CPU{A: 0x00, PC: 0x0100, Halted: false}
 
-	return &cpu
+	return cpu
 }
 
 func Step(cpu CPU) uint {
