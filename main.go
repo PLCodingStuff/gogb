@@ -5,11 +5,12 @@ import "fmt"
 type Opcode byte
 
 const (
-	NOP    Opcode = 0x00
-	JPa16  Opcode = 0xC3
-	LDAn8  Opcode = 0x3E
-	LDHa8A Opcode = 0xE0
-	HALT   Opcode = 0x76
+	NOP     Opcode = 0x00
+	JPa16   Opcode = 0xC3
+	LDAn8   Opcode = 0x3E
+	LDHa8A  Opcode = 0xE0
+	HALT    Opcode = 0x76
+	UNKNOWN Opcode = 0xFF
 )
 
 const KB = 1024

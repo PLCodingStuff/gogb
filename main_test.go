@@ -94,3 +94,16 @@ func TestHALT(t *testing.T) {
 		t.Errorf("cpu.Halted = %t, expected false", cpu.Halted)
 	}
 }
+
+func TestUnknownOpcode(t *testing.T) {
+	cpu := InitTest(UNKNOWN)
+
+	defer func() {
+		err := recover()
+		if err == nil {
+			t.Fatalf("Expected panic with invalid address, received %v", err)
+		}
+	}()
+
+	Step(cpu)
+}
