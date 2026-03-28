@@ -82,5 +82,15 @@ func TestLDH_a8_A(t *testing.T) {
 }
 
 func TestHALT(t *testing.T) {
+	cpu := InitTest(HALT)
 
+	cycles := Step(cpu)
+
+	if cpu.PC != 0x0101 {
+		t.Errorf("cpu.PC = 0x%04x, expected 0x0101", cpu.PC)
+	} else if cycles != 4 {
+		t.Errorf("Step({A: 0x%04x, PC: 0x%04x, Halted: %t}) = %d, expected 4", 0x00, 0x0100, false, cycles)
+	} else if cpu.Halted != true {
+		t.Errorf("cpu.Halted = %t, expected false", cpu.Halted)
+	}
 }
