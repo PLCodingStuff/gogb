@@ -24,13 +24,13 @@ type CPU struct {
 	Halted bool
 }
 
-func InitCPU() CPU {
+func InitCPU() *CPU {
 	cpu := CPU{A: 0x00, PC: 0x0100, Halted: false}
 
-	return cpu
+	return &cpu
 }
 
-func Step(cpu CPU) uint {
+func Step(cpu *CPU) uint {
 	opcode := Opcode(RAM[cpu.PC])
 	cpu.PC++
 
